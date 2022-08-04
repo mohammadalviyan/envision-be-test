@@ -1,0 +1,250 @@
+components:
+    schemas:
+      Error:
+        type: 'object'
+        properties:
+          message:
+            type: 'string'
+            description: 'Error message'
+      GeneralError:
+        type: 'object'
+        properties:
+          error:
+            $ref: '#/components/schemas/Error'
+      Product:
+        type: 'object'
+        properties:
+          id:
+            type: string
+            description: Product id
+          name:
+            $ref: '#/components/schemas/LocaleContent'
+          description:
+            $ref: '#/components/schemas/LocaleContent'
+          videoUrl:
+            type: string
+            description: Video Url
+          benefits:
+            type: array
+            description: Product benefits
+            items:
+              $ref: '#/components/schemas/ProductBenefit'
+      About:
+        type: 'object'
+        properties:
+          id:
+            type: string
+            description: About id
+          title:
+            $ref: '#/components/schemas/LocaleContent'
+          cover:
+            type: string
+            description: 'About Cover'
+          description:
+            $ref: '#/components/schemas/LocaleContent'
+          url:
+            type: string
+            description: About Url
+      PlanQuotations:
+        type: 'array'
+        minItems: 0
+        description: 'Plan quotations'
+        items:
+          $ref: '#/components/schemas/PlanQuotation'
+      PlansRecommended:
+        type: 'array'
+        minItems: 0
+        description: 'Plans Recommended'
+        items:
+          $ref: '#/components/schemas/PlanRecommended'
+      PlanRecommended:
+        type: 'object'
+        properties:
+          id:
+            type: string
+            description: Plan id
+          name:
+            type: string
+            description: Plan name
+          description:
+            $ref: '#/components/schemas/LocaleContent'
+      PlanQuotation:
+        type: 'object'
+        properties:
+          id:
+            type: string
+            description: Plan id
+          name:
+            type: string
+            description: Plan name
+          description:
+            $ref: '#/components/schemas/LocaleContent'
+          default:
+            type: boolean
+            description: Default selection
+          premium:
+            type: object
+            description: Plan premium
+            properties:
+              amount:
+                type: number
+                description: Premium amount
+              term:
+                type: string
+                description: Premium term
+                enum: ['Monthly', 'SemiQuarterly', 'Quarterly', 'Annually']
+              termLength:
+                type: number
+                description: Premium term length
+          benefits:
+            type: array
+            description: Plan benefits
+            items:
+              $ref: '#/components/schemas/PlanBenefit'
+          riders:
+            type: array
+            description: Plan riders
+            items:
+              $ref: '#/components/schemas/Riders'
+      PlanBenefit:
+        type: object
+        description: Plan benefit
+        properties:
+          name:
+            $ref: '#/components/schemas/LocaleContent'
+          description:
+            $ref: '#/components/schemas/LocaleContent'
+      ProductBenefit:
+        type: object
+        description: Product Benefit
+        properties:
+          id:
+            type: string
+            description: Benefit id
+          name:
+            $ref: '#/components/schemas/LocaleContent'
+          description:
+            $ref: '#/components/schemas/LocaleContent'
+      Riders:
+        type: object
+        description: Rider
+        properties:
+          id:
+            type: string
+            description: Rider id
+          name:
+            $ref: '#/components/schemas/LocaleContent'
+          description:
+            $ref: '#/components/schemas/LocaleContent'
+          premium:
+            type: number
+            description: Rider premium amount
+      LocaleContent:
+        type: object
+        description: Locale content
+        properties:
+          en:
+            type: string
+            description: Content in English
+          zh:
+            type: string
+            description: Content in Chinese
+    responses:
+      ProductDetailResponse:
+        description: 'Product detail'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      PlansQuoteResponse:
+        description: 'Eligible plan with quotation'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlanQuotations'
+      PlansRecommendedResponse:
+        description: 'Eligible plans recommended'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlansRecommended'
+      AboutResponse:
+        description: 'Description About Us'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/About'
+      400Response:
+        description: Invalid input
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeneralError'
+      500Response:
+        description: Internal server error
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeneralError'
+      401Response:
+        description: Unauthenticated
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GeneralError'
+    parameters:
+      productIdParam:
+        name: id
+        in: path
+        description: Product id
+        required: true
+        schema:
+          type: string
+      profileGenderParam:
+        name: gender
+        in: query
+        description: Profile gender
+        required: true
+        schema:
+          type: string
+          enum: [M, F]
+      profileDOBParam:
+        name: dob
+        in: query
+        description: Profile date of birth follow YYYY-MM-DD format
+        required: true
+        schema:
+          type: string
+          format: date
+      profileSmokeParam:
+        name: smoke
+        in: query
+        description: Profile smoke status
+        required: true
+        schema:
+          type: boolean
+      platformCorrelationParam:
+        name: X-Correlation-Id
+        in: header
+        description: Correlation ID
+        schema:
+          type: string
+          format: uuid
+      platformRequestIdParam:
+        name: X-Request-Id
+        in: header
+        description: Request ID
+        schema:
+          type: string
+          format: uuid
+      platformUserAgentParam:
+        name: User-Agent
+        in: header
+        description: |
+          User agent of service calling
+          Default browser user agent if caller is browser
+          Service-name/version if caller is another micro-service
+        schema:
+          type: string
+          format: uuid
+  

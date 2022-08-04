@@ -1,0 +1,193 @@
+openapi: '3.0.3'
+
+servers:
+    -   url: 'localhost:8080/api'
+        description: Development
+
+components:
+    schemas:
+        User:
+            type: object
+            properties:
+                id:
+                    type: string
+                    format: uuid
+                firstName:
+                    type: string
+                lastName:
+                    type: string
+                email:
+                    type: string
+                dob:
+                    type: string
+                location:
+                    type: string
+                isNotified:
+                    type: boolean
+
+        StatusRequest:
+            type: object
+            properties:
+                status:
+                    type: boolean
+                message:
+                    type: string
+
+        TimeStamp:
+            type: object
+            properties:
+                createdAt:
+                    type: string
+                    format: date-time
+                    example: '2020-04-28T12:23:28.498Z'
+                updatedAt:
+                    type: string
+                    format: date-time
+                    example: '2020-04-28T12:23:28.498Z'
+
+    users:
+        users:
+            value:
+                data:
+                    -   id: "e1c52bb1-1b71-475d-a0a6-c6d0b67a0a41"
+                        firstName: "test"
+                        lastName: "test"
+                        email: "test@gmail.com"
+                        dob: "17-08-1996"
+                        location: "test"
+                        updated_at: "2022-08-04T00:37:39.341Z"
+                        created_at: "2022-08-04T00:37:39.341Z"
+                        deleted_at: null
+
+        successStatusRequest:
+            value:
+                success:
+                    status: true
+                    message: Success
+paths:
+    /users:
+        post:
+            summary: Add a New user
+            description: Add new user. Will return 201 if created new record
+            tags:
+                - Users
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                          type: object
+                          properties:
+                            firstName:
+                                type: string
+                            lastName:
+                                type: string
+                            email:
+                                type: string
+                            dob:
+                                type: string
+                            location:
+                                type: string
+                          required:
+                            - firstName
+                            - lastName
+                            - email
+                            - dob
+                            - location
+            responses:
+                '201':
+                    description: Created
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        $ref: '#/components/schemas/StatusRequest'
+                                    data:
+                                        allOf:
+                                            - $ref: '#/components/schemas/User'
+                                            - $ref: '#/components/schemas/TimeStamp'
+
+    /users/{id}:
+        put:
+            summary: Update user
+            description: >-
+                Update user by user id.
+            tags:
+                - Users
+            parameters:
+                -   name: id
+                    in: path
+                    schema:
+                        type: string
+                        format: uuid
+                    required: true
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                firstName:
+                                    type: string
+                                lastName:
+                                    type: string
+                                email:
+                                    type: string
+                                dob:
+                                    type: string
+                                location:
+                                    type: string
+                            required:
+                            - firstName
+                            - lastName
+                            - email
+                            - dob
+                            - location
+            responses:
+                '404':
+                    description: Not Found
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        $ref: '#/components/schemas/StatusRequest'
+                            user:
+                                success:
+                                    status: false
+                                    message: User Not Found
+
+        delete:
+            summary: Delete user
+            description: >-
+                Delete user by user id.
+            tags:
+                - Users
+            parameters:
+                -   name: id
+                    in: path
+                    schema:
+                        type: string
+                        format: uuid
+                    required: true
+            responses:
+                '204':
+                    description: No Content (Successfully Delete)
+                '404':
+                    description: Not Found
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    success:
+                                        $ref: '#/components/schemas/StatusRequest'
+                            user:
+                                success:
+                                    status: false
+                                    message: User Not Found
+

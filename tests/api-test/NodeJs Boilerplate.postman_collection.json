@@ -1,0 +1,577 @@
+{
+	"info": {
+		"_postman_id": "efef9b8d-6d83-4c2a-a605-af6c1c31dac2",
+		"name": "Node Js BoilerPlate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Examples",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/examples?name=&page=1&limit=5",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"examples"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": ""
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/examples?page=1&limit=5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"examples"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "248"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f8-cmCqgNkxrtwFCNlqJwSObBv20RA\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 18 Jun 2021 15:38:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": {\n        \"status\": true,\n        \"message\": \"Success\"\n    },\n    \"data\": [\n        {\n            \"id\": \"95ea224c-cca2-4a10-aef1-d0dd34eeba83\",\n            \"name\": \"example 1\",\n            \"address\": \"kediri\",\n            \"created_at\": \"2021-06-18T15:37:29.856Z\",\n            \"updated_at\": \"2021-06-18T15:37:29.856Z\"\n        }\n    ],\n    \"meta\": {\n        \"page\": 1,\n        \"limit\": 5\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Example",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/examples/:id",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"examples",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "95ea224c-cca2-4a10-aef1-d0dd34eeba83"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Failed",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/examples/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"examples",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "Unprocessable Entity",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "106"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"6a-nBahndXRo9Bt97FLta5hAdM3BiU\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 18 Jun 2021 15:33:24 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": {\n        \"status\": false,\n        \"message\": \"Invalid Parameters\"\n    },\n    \"errors\": {\n        \"id\": \"The Id must be a valid UUID.\"\n    }\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/examples/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"examples",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "95ea224c-cca2-4a10-aef1-d0dd34eeba83"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "218"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"da-4fmGz++UCU5Rah7LlUSQPbgsHHE\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 18 Jun 2021 15:38:23 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": {\n        \"status\": true,\n        \"message\": \"Success\"\n    },\n    \"data\": {\n        \"id\": \"95ea224c-cca2-4a10-aef1-d0dd34eeba83\",\n        \"name\": \"example 1\",\n        \"address\": \"kediri\",\n        \"created_at\": \"2021-06-18T15:37:29.856Z\",\n        \"updated_at\": \"2021-06-18T15:37:29.856Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Add Example",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"example 1\",\r\n    \"address\": \"kediri\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/examples",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"examples"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"example 1\",\r\n    \"address\": \"kediri\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/examples",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"examples"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "236"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ec-GRB7vdOuwswbPsInIXR3C5UNIrU\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 18 Jun 2021 15:37:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": {\n        \"status\": true,\n        \"message\": \"Success\"\n    },\n    \"data\": {\n        \"id\": \"95ea224c-cca2-4a10-aef1-d0dd34eeba83\",\n        \"name\": \"example 1\",\n        \"address\": \"kediri\",\n        \"updated_at\": \"2021-06-18T15:37:29.856Z\",\n        \"created_at\": \"2021-06-18T15:37:29.856Z\",\n        \"deleted_at\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Example",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"example 1\",\r\n    \"address\": \"malang\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/examples/:id",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"examples",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "95ea224c-cca2-4a10-aef1-d0dd34eeba83"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"example 1\",\r\n    \"address\": \"malang\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/examples/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"examples",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "95ea224c-cca2-4a10-aef1-d0dd34eeba83"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "236"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ec-ctGJwXczg0yfga0s97nVps60LqI\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 18 Jun 2021 15:40:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": {\n        \"status\": true,\n        \"message\": \"Success\"\n    },\n    \"data\": {\n        \"id\": \"95ea224c-cca2-4a10-aef1-d0dd34eeba83\",\n        \"name\": \"example 1\",\n        \"address\": \"malang\",\n        \"created_at\": \"2021-06-18T15:37:29.856Z\",\n        \"updated_at\": \"2021-06-18T15:40:26.839Z\",\n        \"deleted_at\": null\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/examples/:id",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"examples",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "95ea224c-cca2-4a10-aef1-d0dd34eeba83"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Failed",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/examples/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"examples",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "95ea224c-cca2-4a10-aef1-d0dd34eeba86"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "58"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3a-O9Y/6+lfx2/MOFrnRvaJ93/Lyyo\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 18 Jun 2021 15:41:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": {\n        \"status\": false,\n        \"message\": \"Example Not Found\"\n    }\n}"
+				},
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/examples/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"examples",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "95ea224c-cca2-4a10-aef1-d0dd34eeba83"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 18 Jun 2021 15:41:53 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

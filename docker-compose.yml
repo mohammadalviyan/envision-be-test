@@ -1,0 +1,30 @@
+version: '3'
+services:
+    mssql:
+        image: mcr.microsoft.com/mssql/server:2017-CU19-ubuntu-16.04
+        container_name: mssql
+        restart: always
+        labels:
+            user-birthday: User Database
+        ports:
+            - 1433:1433
+        networks:
+            internal:
+                ipv4_address: 172.21.0.2
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_USER=sa
+            - SA_PASSWORD=Kiasu12345(!)
+            - MSSQL_PID=Developer
+        volumes:
+            - "mssqldbdata:/var/opt/mssql"
+
+volumes:
+    mssqldbdata:
+        external: true
+networks:
+    internal:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.21.0.0/16
