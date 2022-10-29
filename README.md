@@ -1,5 +1,3 @@
-# Node Js Boilerplate
-
 ### Prerequisites
 1. Node v12 or higher
 2. NPM v6 or higher
